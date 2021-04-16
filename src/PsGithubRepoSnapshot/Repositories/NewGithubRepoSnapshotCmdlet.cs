@@ -130,10 +130,13 @@ namespace GithubRepoSnapshot.Repositories
                 {
                     WriteVerbose($"Downloading {(ExtractArchive.IsPresent ? "and extracting" : "")} {repo.Name} to {outputDir}");
 
-                    if (string.IsNullOrWhiteSpace(Branch))
-                        Branch = repo.DefaultBranch;
+                    var branch = string.IsNullOrWhiteSpace(Branch)
+                        ? repo.DefaultBranch
+                        : Branch;
 
-                    Task.Run(async () => await githubSvc.DownloadAndExtractRepository(repo, outputDir, Branch, ExtractArchive.IsPresent));
+                    var task = githubSvc.DownloadAndExtractRepository(repo, outputDir, branch, ExtractArchive.IsPresent);
+
+                    task.Wait();
                 }
             }
             catch (Exception e)

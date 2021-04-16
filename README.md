@@ -7,6 +7,10 @@ A Powershell module that integrates with the Github API and downloads a snapshot
 
 Available in the [Powershell Gallery](https://www.powershellgallery.com/packages/GithubRepoSnapshot)
 
+## Requirements
+
+A Github personal access token needs to be created with permissions to access repositories: [Github personal access tokens](https://github.com/settings/tokens).
+
 ## Description
 
 ### Get-GithubRepos
@@ -18,9 +22,17 @@ Uses endpoints:
 [Github API docs (get repositories for user)](https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user).
 [Github API docs (get repositories for organisation)](https://docs.github.com/en/rest/reference/repos#list-organization-repositories).
 
-## Requirements
+### New-GithubRepoSnapshot
 
-A Github personal access token needs to be created with permissions to access repositories: [Github personal access tokens](https://github.com/settings/tokens).
+Create a snapshot directory containing Github repositories. 
+
+Optionally filter repositories by providing a filter type, filter search type and filter text parameters. 
+
+Optionally specify which branch to retrieve (the Github repository default branch will be used otherwise).
+
+Optionally supply the ooutput path (C:/temp will beused otherwise).
+
+**Hint**: Use the Verbose flag to get an informational message written to the host for each repository downloaded.
 
 ## Installation (from the Powershell Gallery)
 

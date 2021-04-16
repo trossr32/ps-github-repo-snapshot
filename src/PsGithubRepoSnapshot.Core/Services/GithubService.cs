@@ -68,35 +68,26 @@ namespace PsGithubRepoSnapshot.Core.Services
         /// </summary>
         /// <param name="repo"></param>
         /// <param name="path"></param>
+        /// <param name="branch"></param>
+        /// <param name="extract"></param>
         /// <returns></returns>
         public async Task DownloadAndExtractRepository(GithubRepo repo, string path, string branch, bool extract)
         {
             using var client = GetClient();
-
-            var response = await client.GetAsync($"/repos/{GithubContext.Credentials.AccountName}/{repo.Name}/zipball/{branch}", HttpCompletionOption.ResponseHeadersRead);
+            
+            var response = await client.GetAsync($"/repos/{GithubContext.Credentials.AccountName}/{repo.Name}/zipball/{branch}");
 
             response.EnsureSuccessStatusCode();
 
             var repoPath = Path.Join(path, repo.Name);
             var zip = $"{repoPath}.zip";
 
-            await using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(zip, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+            await using (var fs = new FileStream(zip, FileMode.Create, FileAccess.Write, FileShare.None))
+            await using (Stream contentStream = await response.Content.ReadAsStreamAsync())
             {
-                var buffer = new byte[8192];
-                var isMoreToRead = true;
-
-                do
-                {
-                    var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
-
-                    if (read != 0)
-                        await fileStream.WriteAsync(buffer, 0, read);
-                    else
-                        isMoreToRead = false;
-                }
-                while (isMoreToRead);
+                await contentStream.CopyToAsync(fs);
             }
-            
+
             if (extract)
                 ZipFile.ExtractToDirectory(zip, repoPath);
         }
