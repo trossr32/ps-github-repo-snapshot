@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<helpItems xmlns="http://msh" schema="maml">
+  <command:command
+    xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+    xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+    xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10"
+    xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Set-GithubCredentials</command:name>
+      <command:verb>Set</command:verb>
+      <command:noun>GithubCredentials</command:noun>
+      <maml:description>
+        <maml:para>
+          Register Github credentials for the session. Required before running any Github cmdlets.
+        </maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>
+        Register Github credentials for the session. Required before running any Github cmdlets.
+      </maml:para>
+      <maml:para>
+        Optionally store credentials permanently in an encrypted locally stored file to remove the need for credentials to be set in each session by supplying the StorePermanent switch parameter.
+      </maml:para>
+    </maml:description>
+    <command:parameters>
+      <command:parameter required="true" pipelineInput="false" variableLength="true" position="0" aliases="H">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>
+            Your Github user or organisation name
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">String</command:parameterValue>
+        <dev:type>String</dev:type>
+        <dev:defaultvalue>null</dev:defaultvalue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="true" position="1" aliases="U">
+        <maml:name>ApiKey</maml:name>
+        <maml:description>
+          <maml:para>
+            Your Github personal token API key
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">String</command:parameterValue>
+        <dev:type>String</dev:type>
+        <dev:defaultvalue>null</dev:defaultvalue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="true" position="2" aliases="P">
+        <maml:name>AccountType</maml:name>
+        <maml:description>
+          <maml:para>
+            Whether the account is a user or an organisation
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">String</command:parameterValue>
+        <dev:type>String</dev:type>
+        <dev:defaultvalue>null</dev:defaultvalue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false" aliases="S">
+        <maml:name>StorePermanent</maml:name>
+        <maml:description>
+          <maml:para>
+            If supplied credentials will be stored permanently in an encrypted local file that removes the need for credentials to be set in each session.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>SwitchParameter</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Register credentials in session</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>Set-GithubCredentials -AccountName "Hello" -ApiKey "W0rLd!" -AccountType User</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Credentials will be registered for the lifetime of the session.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Register credentials in session and store permanently</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>Set-GithubCredentials -N "Hello" -K "W0rLd!" -T User -StorePermanent</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Credentials will be registered for the lifetime of the session and stored locally so that this command will not need to be run again.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/trossr32/ps-github-repo-snapshot</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command
+    xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+    xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+    xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10"
+    xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-GithubCredentials</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>GithubCredentials</command:noun>
+      <maml:description>
+        <maml:para>
+          Remove previously registered Github credentials.
+        </maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>
+        Remove previously registered Github credentials for the session.
+      </maml:para>
+      <maml:para>
+        Optionally remove stored credentials from an encrypted local file by supplying the DeletePermanent switch parameter.
+      </maml:para>
+    </maml:description>
+    <command:parameters>
+      <command:parameter required="false" pipelineInput="false" variableLength="false" aliases="D">
+        <maml:name>DeletePermanent</maml:name>
+        <maml:description>
+          <maml:para>
+            If supplied any credentials stored permanently in an encrypted local file will be deleted.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>SwitchParameter</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Remove previously registered credentials from session</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>Remove-GithubCredentials</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Previously registered credentials will be removed.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Remove previously registered credentials from session and those stored locally</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>Remove-GithubCredentials -DeletePermanent</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Previously registered credentials will be removed from the session and from the encrypted local file.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/trossr32/ps-github-repo-snapshot</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command
+    xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+    xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+    xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10"
+    xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-GithubTorrents</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>GithubTorrents</command:noun>
+      <maml:description>
+        <maml:para>
+          Get Github repos.
+        </maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>
+        Get Github repos. Optionally filter response by providing a filter type, filter search type and filter text parameters.
+      </maml:para>
+      <maml:para>
+        Calls the get repos endpoint for a user or organisation:
+        https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
+        https://docs.github.com/en/rest/reference/repos#list-organization-repositories
+      </maml:para>
+    </maml:description>
+    <command:parameters>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>FilterType</maml:name>
+        <maml:description>
+          <maml:para>
+            Optionally filter returned repositories.
+            None = no filter, Positive = all where repo name matches filter, Negative = all where repo name does not match filter
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">FilterType</command:parameterValue>
+        <dev:type>FilterType</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>FilterSearchType</maml:name>
+        <maml:description>
+          <maml:para>
+            How to apply a filter type if supplied.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">FilterSearchType</command:parameterValue>
+        <dev:type>FilterSearchType</dev:type>
+        <dev:defaultValue>Contains</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>FilterText</maml:name>
+        <maml:description>
+          <maml:para>
+            The text used to filter against repository names if a filter type is supplied.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>String</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>Json</maml:name>
+        <maml:description>
+          <maml:para>
+            If supplied the data will be output as a JSON string.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>SwitchParameter</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get all repos</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>Get-GithubRepos</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Retrieves all repos.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get all repos and return as JSON</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>Get-GithubRepos -Json</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Retrieves all repos and returns as JSON.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 3: Get repos where the name starts with foobar</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>Get-GithubRepos -FilterType Positive -FilterSearchType StartsWith -FilterText 'foobar'</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Retrieves all repos where the name starts with foobar.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/trossr32/ps-github-repo-snapshot</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user</maml:linkText>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://docs.github.com/en/rest/reference/repos#list-organization-repositories</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command
+    xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+    xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+    xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10"
+    xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-GithubRepoSnapshot</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>GithubRepoSnapshot</command:noun>
+      <maml:description>
+        <maml:para>
+          Create a snapshot directory containing Github repositories.
+        </maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>
+        Create a snapshot directory containing Github repositories. Optionally filter repositories by providing a filter type, filter search type and filter text parameters, and specify which branch to retrieve.
+      </maml:para>
+    </maml:description>
+    <command:parameters>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>
+            The path the downloaded repositories will be saved to.
+          </maml:para>
+          <maml:para>
+            Within this path a new containing directory with a datetime stamped name will be created for each run.
+          </maml:para>
+          <maml:para>
+            Defaults to C:\temp
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>String</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>Branch</maml:name>
+        <maml:description>
+          <maml:para>
+            By default, whatever the default branch is configured in Github for a given repository will be used.
+          </maml:para>
+          <maml:para>
+            If supplied, this overrides that default.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>String</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>ExtractArchive</maml:name>
+        <maml:description>
+          <maml:para>
+            By default, branches are downloaded as zip archives. If this parameter is supplied the archives will also be extracted.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>SwitchParameter</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>FilterType</maml:name>
+        <maml:description>
+          <maml:para>
+            Optionally filter returned repositories.
+            None = no filter, Positive = all where repo name matches filter, Negative = all where repo name does not match filter
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">FilterType</command:parameterValue>
+        <dev:type>FilterType</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>FilterSearchType</maml:name>
+        <maml:description>
+          <maml:para>
+            How to apply a filter type if supplied.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">FilterSearchType</command:parameterValue>
+        <dev:type>FilterSearchType</dev:type>
+        <dev:defaultValue>Contains</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" pipelineInput="false" variableLength="false">
+        <maml:name>FilterText</maml:name>
+        <maml:description>
+          <maml:para>
+            The text used to filter against repository names if a filter type is supplied.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>String</dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Download and extract all repositories at their default branch to C:/temp</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>New-GithubRepoSnapshot -ExtractArchive</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Download and extract all repositories at their default branch to C:/temp.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Download and extract repositories where the name does not contain 'foobar' at their 'staging' branch to D:/foobar</maml:title>
+        <maml:Introduction>
+          <maml:paragraph>C:\PS></maml:paragraph>
+        </maml:Introduction>
+        <dev:code>New-GithubRepoSnapshot -Path 'D:/foobar' -Branch 'staging' -ExtractArchive -FilterType Negative -FilterSearchType Contains -FilterText 'foobar'</dev:code>
+        <dev:remarks>
+          <maml:para>
+            Download and extract repositories where the name does not contain 'foobar' at their 'staging' branch to D:/foobar.
+          </maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/trossr32/ps-github-repo-snapshot</maml:linkText>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+</helpItems>
