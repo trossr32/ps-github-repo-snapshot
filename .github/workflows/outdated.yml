@@ -4,16 +4,12 @@ name: Outdated package checks
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    branches: [ main, master ]
-    paths:
-      - '.github/workflows/outdated.yml'
-      - 'TxnNetwork.ApiDocumentation/**'
+    branches: [ main ]
   
   workflow_dispatch:
 
 env:
-  SOLUTION_PATH: 'TxnNetwork.ApiDocumentation/TxnNetwork.ApiDocumentation.sln'
-  PROJECT_DIR: 'TxnNetwork.ApiDocumentation/TxnNetwork.ApiDocumentation'
+  SOLUTION_PATH: 'src/PsGithubRepoSnapshot.sln'
 
 jobs:
   outdated-packages-check:
@@ -24,5 +20,3 @@ jobs:
         with:
           use-dotnet-outdated: true
           dotnet-solution-or-project-path: ${{ env.SOLUTION_PATH }}
-          use-npm-outdated: true
-          npm-project-directory: ${{ env.PROJECT_DIR }}
