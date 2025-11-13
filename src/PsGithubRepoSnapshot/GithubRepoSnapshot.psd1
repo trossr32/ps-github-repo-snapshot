@@ -12,7 +12,7 @@
     RootModule           = 'GithubRepoSnapshot.dll'
 
     # Version number of this module.
-    ModuleVersion        = '1.0.1'
+    ModuleVersion        = '2.0.0'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core'
@@ -27,7 +27,7 @@
     CompanyName          = 'Unknown'
 
     # Copyright statement for this module
-    Copyright            = '(c) 2021 Rob Green. All rights reserved.'
+    Copyright            = '(c) 2025 Rob Green. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description          = 'A Powershell module that integrates with the Github API and downloads a snapshot of all repositories for a user or organisation.'

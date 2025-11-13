@@ -1,9 +1,8 @@
-﻿namespace PsGithubRepoSnapshot.Core.Enums
+﻿namespace PsGithubRepoSnapshot.Core.Enums;
+
+public enum FilterType
 {
-    public enum FilterType
-    {
-        None,
-        Positive,
-        Negative
-    }
+    None,
+    Positive,
+    Negative
 }

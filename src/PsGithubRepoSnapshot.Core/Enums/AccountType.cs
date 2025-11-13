@@ -1,8 +1,7 @@
-﻿namespace PsGithubRepoSnapshot.Core.Enums
+﻿namespace PsGithubRepoSnapshot.Core.Enums;
+
+public enum AccountType
 {
-    public enum AccountType
-    {
-        User,
-        Organisation
-    }
+    User,
+    Organisation
 }
